@@ -2,13 +2,6 @@ const mongoose = require('mongoose');
 const config = require('./config');
 const {msg} = require('./constants');
 
-mongoose.set('strictQuery', false);
-
-const dbConnectionOptions = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-}
-
 // # 1
 // mongoose.connect(config.DB, dbConnectionOptions)
 //     .then(r => JSON.parse(r))
@@ -22,7 +15,7 @@ const dbConnectionOptions = {
 // });
 
 // # 2
-mongoose.connect(config.DB, dbConnectionOptions)
+mongoose.connect(config.DB)
     .then((res) => console.log(msg.DB_CONNECTED(res.connections[0].host, res.connections[0].name)))
     .catch(console.warn.bind(console, msg.DB_CONNECTION_ERROR));
 
